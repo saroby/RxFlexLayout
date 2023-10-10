@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "flexlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/FlexLayout",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1f8ad065db869c477c5ac0cf9190d3f3efbdfd8e"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "branch" : "master",
+        "revision" : "7e89cf95dfa132ea7d02b405b9888dd851ec7de0"
+      }
+    },
+    {
+      "identity" : "rxswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ReactiveX/RxSwift",
+      "state" : {
+        "branch" : "6.6.0",
+        "revision" : "9dcaa4b333db437b0fbfaf453fad29069044a8b4"
+      }
+    }
+  ],
+  "version" : 2
+}

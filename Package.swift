@@ -5,24 +5,37 @@ import PackageDescription
 
 let package = Package(
     name: "RxFlexLayout",
+    platforms: [
+        .iOS(.v13),
+    ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "RxFlexLayout",
-            targets: ["RxFlexLayout"]),
+        .library(name: "RxFlexLayout", targets: ["RxFlexLayout"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/ReactiveX/RxSwift", branch: "6.6.0"),
+        .package(url: "https://github.com/onevcat/Kingfisher", branch: "master"),
+        .package(url: "https://github.com/layoutBox/FlexLayout", branch: "master"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "RxFlexLayout",
-            dependencies: []),
+            dependencies: [
+                .product(name: "RxSwift", package: "RxSwift"),
+                .product(name: "RxCocoa", package: "RxSwift"),
+                "FlexLayout",
+                "Kingfisher",
+            ],
+            cSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),],
+            cxxSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),],
+            swiftSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),]
+        ),
         .testTarget(
             name: "RxFlexLayoutTests",
-            dependencies: ["RxFlexLayout"]),
-    ]
+            dependencies: ["RxFlexLayout",],
+            cSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),],
+            cxxSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),],
+            swiftSettings: [.define("FLEXLAYOUT_SWIFT_PACKAGE"),]
+        ),
+    ],
+    swiftLanguageVersions: [.v5]
 )
