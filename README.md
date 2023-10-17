@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         }
 
         textRelay
-            .bind(to: label.rx.text(layoutView: flexView, sizeToFit: true))
+            .bind(to: label.rx.text(layoutView: self.view, sizeToFit: true))
             .disposed(by: disposeBag)
     }
 
