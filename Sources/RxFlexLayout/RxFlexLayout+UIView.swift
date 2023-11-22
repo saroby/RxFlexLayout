@@ -22,4 +22,14 @@ public extension Reactive where Base: UIView {
         }
     }
     
+    func display(layoutView: UIView) -> Binder<Flex.Display> {
+        return .init(self.base) { view, display in
+            view.flex.display(display)
+            view.flex.markDirty()
+            
+            layoutView.setNeedsLayout()
+        }
+        
+    }
+    
 }
