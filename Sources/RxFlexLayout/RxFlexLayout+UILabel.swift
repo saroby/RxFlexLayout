@@ -5,7 +5,7 @@ import RxSwift
 public extension Reactive where Base: UILabel {
     
     func text(layoutView: UIView, sizeToFit: Bool = false) -> Binder<String?> {
-        return .init(self.base) { label, text in
+        return .init(self.base) { [weak layoutView] label, text in
             label.text = text
             label.flex.markDirty()
             
@@ -13,12 +13,12 @@ public extension Reactive where Base: UILabel {
                 label.sizeToFit()
             }
             
-            layoutView.setNeedsLayout()
+            layoutView?.setNeedsLayout()
         }
     }
     
     func attributedText(layoutView: UIView, sizeToFit: Bool = false) -> Binder<NSAttributedString?> {
-        return .init(self.base) { label, attributedText in
+        return .init(self.base) { [weak layoutView] label, attributedText in
             label.attributedText = attributedText
             label.flex.markDirty()
             
@@ -26,7 +26,7 @@ public extension Reactive where Base: UILabel {
                 label.sizeToFit()
             }
             
-            layoutView.setNeedsLayout()
+            layoutView?.setNeedsLayout()
         }
     }
     

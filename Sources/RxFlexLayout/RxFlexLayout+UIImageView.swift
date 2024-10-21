@@ -12,7 +12,7 @@ public extension Reactive where Base: UIImageView {
         progressBlock: DownloadProgressBlock? = nil,
         completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil
     ) -> Binder<Kingfisher.Source> {
-        return .init(self.base) { (imageView: UIImageView, source: Kingfisher.Source) in
+        return .init(self.base) { [weak layoutView] (imageView: UIImageView, source: Kingfisher.Source) in
             imageView.kf.setImage(
                 with: source,
                 placeholder: placeholder,
@@ -23,7 +23,7 @@ public extension Reactive where Base: UIImageView {
                 
                 imageView.flex.markDirty()
                 
-                layoutView.setNeedsLayout()
+                layoutView?.setNeedsLayout()
             }
         }
     }
@@ -35,7 +35,7 @@ public extension Reactive where Base: UIImageView {
         progressBlock: DownloadProgressBlock? = nil,
         completionHandler: ((Result<RetrieveImageResult, KingfisherError>) -> Void)? = nil
     ) -> Binder<URL?> {
-        return .init(self.base) { (imageView: UIImageView, source: URL?) in
+        return .init(self.base) { [weak layoutView] (imageView: UIImageView, source: URL?) in
             imageView.kf.setImage(
                 with: source,
                 placeholder: placeholder,
@@ -46,7 +46,7 @@ public extension Reactive where Base: UIImageView {
                 
                 imageView.flex.markDirty()
                 
-                layoutView.setNeedsLayout()
+                layoutView?.setNeedsLayout()
             }
         }
     }

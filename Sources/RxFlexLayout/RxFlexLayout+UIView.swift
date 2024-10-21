@@ -5,29 +5,29 @@ import RxSwift
 public extension Reactive where Base: UIView {
     
     func isHidden(layoutView: UIView) -> Binder<Bool> {
-        return .init(self.base) { view, isHidden in
+        return .init(self.base) { [weak layoutView] view, isHidden in
             view.flex.display(isHidden ? .none : .flex)
             view.flex.markDirty()
             
-            layoutView.setNeedsLayout()
+            layoutView?.setNeedsLayout()
         }
     }
     
     func isShown(layoutView: UIView) -> Binder<Bool> {
-        return .init(self.base) { view, isShown in
+        return .init(self.base) { [weak layoutView] view, isShown in
             view.flex.display(isShown ? .flex : .none)
             view.flex.markDirty()
             
-            layoutView.setNeedsLayout()
+            layoutView?.setNeedsLayout()
         }
     }
     
     func display(layoutView: UIView) -> Binder<Flex.Display> {
-        return .init(self.base) { view, display in
+        return .init(self.base) { [weak layoutView] view, display in
             view.flex.display(display)
             view.flex.markDirty()
             
-            layoutView.setNeedsLayout()
+            layoutView?.setNeedsLayout()
         }
     }
     
