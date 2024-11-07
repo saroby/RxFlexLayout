@@ -3,6 +3,7 @@ import RxSwift
 import FlexLayout
 import Kingfisher
 
+@MainActor
 public extension Reactive where Base: UIImageView {
     
     func asyncImageURL(
@@ -52,6 +53,7 @@ public extension Reactive where Base: UIImageView {
     }
 }
 
+@MainActor
 public extension Reactive where Base: UIImageView {
     
     func asyncImageURL(
